@@ -3,41 +3,74 @@
  *
  * Convert all function constructors to ES6 Classes keeping same functionality
  */
+// PROTOTYPE IMPLEMENTATION
+// function Product(props) {
+//   this.price = props.price;
+// }
 
-function Product(props) {
-  this.price = props.price;
+// Product.prototype.priceInfo = function() {
+//   console.log(`Price of the product is ${this.price}`);
+// };
+
+class Product {
+  constructor(props) {
+    this.price = props.price !== undefined? props.price : null;
+  }
+
+  priceInfo() {
+    console.log(`Price of the product is ${this.price}`);
+  }
+} 
+
+// PROTOTYPE IMPLEMENTATION
+// function ElectricDevice(props) {
+//   Product.call(this, props);
+//   this.energyEfficiencyClass = props.energyEfficiencyClass;
+// }
+
+// ElectricDevice.prototype = Object.create(Product.prototype);
+
+// ElectricDevice.prototype.constructor = ElectricDevice;
+
+// ElectricDevice.prototype.energyInfo = function() {
+//   console.log(
+//     `Energy Efficiency Class is ${
+//       this.energyEfficiencyClass
+//     }`
+//   );
+// };
+
+class ElectricDevice extends Product{
+  constructor(props) {
+    super(props);
+    this.energyEfficiencyClass = props.energyEfficiencyClass !== undefined? props.energyEfficiencyClass : null;
+  }
+
+  energyInfo() {
+    console.log(
+      `Energy Effiency Class is ${this.energyEfficiencyClass}`
+    );
+  }
 }
 
-Product.prototype.priceInfo = function() {
-  console.log(`Price of the product is ${this.price}`);
-};
+// PROTOTYPE IMPLEMENTATION
+// function TV(props) {
+//   ElectricDevice.call(this, props);
+//   this.model = props.model;
+//   this.diagonal = props.diagonal;
+// }
 
-function ElectricDevice(props) {
-  Product.call(this, props);
-  this.energyEfficiencyClass = props.energyEfficiencyClass;
+// TV.prototype = Object.create(ElectricDevice.prototype);
+
+// TV.prototype.constructor = TV;
+
+class TV extends ElectricDevice{
+  constructor(props) {
+    super(props);
+    this.model = props.model !== undefined? props.model : null;
+    this.diagonal = props.diagonal !== undefined? props.diagonal : null;
+  }
 }
-
-ElectricDevice.prototype = Object.create(Product.prototype);
-
-ElectricDevice.prototype.constructor = ElectricDevice;
-
-ElectricDevice.prototype.energyInfo = function() {
-  console.log(
-    `Energy Efficiency Class is ${
-      this.energyEfficiencyClass
-    }`
-  );
-};
-
-function TV(props) {
-  ElectricDevice.call(this, props);
-  this.model = props.model;
-  this.diagonal = props.diagonal;
-}
-
-TV.prototype = Object.create(ElectricDevice.prototype);
-
-TV.prototype.constructor = TV;
 
 const propsForMyTv = {
   model: "A1620",
