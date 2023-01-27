@@ -9,3 +9,19 @@
  *
  * Create several instances of the new "ExtendedArray" class and test both methods "sum" and "onlyNumbers"
  */
+
+class ExtendedArray extends Array {
+  sum() {
+    return this.reduce((sum, element) => sum + element);
+  }
+
+  onlyNumbers() {
+    return this.filter(element => typeof element === "number");
+  }  
+}
+
+const sumTest = new ExtendedArray(1,2,3);
+const onlyNumbersTest = new ExtendedArray(1,2,3,'a','b','c');
+
+console.log(sumTest.sum());
+console.log(onlyNumbersTest.onlyNumbers());
