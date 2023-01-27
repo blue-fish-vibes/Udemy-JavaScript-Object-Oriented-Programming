@@ -102,3 +102,7 @@ const largePlane = new CivilPlane(propsForLargePlane);
 smallPlane.vehicleInfo(); // Max speed of the vehicle is 800 and weight is 15
 
 largePlane.vehicleInfo(); // Max speed of the vehicle is 900 and weight is 40
+
+console.log(smallPlane);
+console.log(largePlane);
+console.log("finish");
