@@ -8,6 +8,9 @@
  * You can use one of the following values:
  * "text", "flat", "outlined", "contained", "raised", "fab", "extendedFab"
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 class MyButton extends React.Component {
   constructor(props) {
     super(props);
@@ -43,7 +46,7 @@ const button2 = React.createElement(MyButton, {
 })
 
 const buttonContainer1 = document.getElementById("button1");
-const buttonContainer2 = document.getElementById("button2");
+//const buttonContainer2 = document.getElementById("button2");
 
 ReactDOM.render(button1, buttonContainer1);
-ReactDOM.render(button2, buttonContainer2);
+//ReactDOM.render(button2, buttonContainer2);
